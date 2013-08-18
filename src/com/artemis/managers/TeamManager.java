@@ -7,21 +7,20 @@ import com.artemis.Manager;
 import com.artemis.utils.Bag;
 import com.artemis.utils.ImmutableBag;
 
-
 /**
  * Use this class together with PlayerManager.
- *
- * You may sometimes want to create teams in your game, so that
- * some players are team mates.
- *
+ * 
+ * You may sometimes want to create teams in your game, so that some players are
+ * team mates.
+ * 
  * A player can only belong to a single team.
- *
+ * 
  * @author Arni Arent
- *
+ * 
  */
 public class TeamManager extends Manager {
-	private final Map<String, Bag<String>> playersByTeam;
-	private final Map<String, String> teamByPlayer;
+	private final Map<String, Bag<String>>	playersByTeam;
+	private final Map<String, String>		teamByPlayer;
 
 	public TeamManager() {
 		playersByTeam = new HashMap<String, Bag<String>>();
@@ -36,15 +35,11 @@ public class TeamManager extends Manager {
 		return teamByPlayer.get(player);
 	}
 
-	@Override
-	protected void initialize() {
-	}
-
 	public void removeFromTeam(String player) {
 		String team = teamByPlayer.remove(player);
-		if(team != null) {
+		if (team != null) {
 			Bag<String> players = playersByTeam.get(team);
-			if(players != null) {
+			if (players != null) {
 				players.remove(player);
 			}
 		}
@@ -56,10 +51,14 @@ public class TeamManager extends Manager {
 		teamByPlayer.put(player, team);
 
 		Bag<String> players = playersByTeam.get(team);
-		if(players == null) {
+		if (players == null) {
 			players = new Bag<String>();
 			playersByTeam.put(team, players);
 		}
 		players.add(player);
+	}
+
+	@Override
+	protected void initialize() {
 	}
 }
