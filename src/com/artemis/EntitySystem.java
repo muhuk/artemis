@@ -33,15 +33,15 @@ public abstract class EntitySystem implements EntityObserver {
 		}
 	}
 
-	private final int			systemIndex;
 	protected World				world;
 	private final Bag<Entity>	actives;
 	private final Aspect		aspect;
 	private final BitSet		allSet;
+	private final boolean		dummy;
 	private final BitSet		exclusionSet;
 	private final BitSet		oneSet;
+	private final int			systemIndex;
 	private boolean				passive;
-	private final boolean		dummy;
 
 	/**
 	 * Creates an entity system that uses the specified aspect as a matcher
@@ -91,11 +91,15 @@ public abstract class EntitySystem implements EntityObserver {
 	@Override
 	public final void enabled(Entity e) {
 		check(e);
-	};
+	}
 
 	public ImmutableBag<Entity> getActives() {
 		return actives;
-	};
+	}
+
+	public Aspect getAspect() {
+		return aspect;
+	}
 
 	public final void process() {
 		if (checkProcessing()) {
@@ -103,7 +107,7 @@ public abstract class EntitySystem implements EntityObserver {
 			processEntities(actives);
 			end();
 		}
-	};
+	}
 
 	/**
 	 * Called before processing of entities begins.
