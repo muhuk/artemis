@@ -32,7 +32,8 @@ public class World {
 							&& Mapper.class.isAssignableFrom(Mapper.class)) {
 						ParameterizedType genericType = (ParameterizedType) field
 								.getGenericType();
-						Class componentType = (Class) genericType
+						@SuppressWarnings("unchecked")
+						Class<? extends Component> componentType = (Class<? extends Component>) genericType
 								.getActualTypeArguments()[0];
 
 						field.setAccessible(true);
