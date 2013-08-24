@@ -4,7 +4,7 @@
 	<groupId>com.gamadu.artemis</groupId>
 	<artifactId>artemis</artifactId>
 	<name>Artemis Components Engine</name>
-	<version>0.2.0-MUHUK-SNAPSHOT</version>
+	<version>0.2.1-MUHUK-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<organization>
 		<name>Gamadu</name>
