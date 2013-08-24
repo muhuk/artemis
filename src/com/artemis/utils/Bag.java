@@ -1,6 +1,5 @@
 package com.artemis.utils;
 
-
 /**
  * Collection type a bit like ArrayList but does not preserve the order of its
  * entities, speedwise it is very good, especially suited for games.
@@ -131,6 +130,19 @@ public class Bag<E> implements ImmutableBag<E> {
 	 */
 	public boolean isIndexWithinBounds(int index) {
 		return index < getCapacity();
+	}
+
+	/**
+	 * Returns an iterator of this Bag's elements.
+	 * 
+	 * Note that the returned iterator doesn't suppoer remove() since this
+	 * method is a member of ImmutableBag interface.
+	 * 
+	 * @return
+	 */
+	@Override
+	public BagIterator<E> iterator() {
+		return new BagIterator<E>(this);
 	}
 
 	/**
